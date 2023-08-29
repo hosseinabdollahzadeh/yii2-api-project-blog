@@ -1,5 +1,6 @@
 <?php
 
+use yii\rest\UrlRule;
 use yii\web\JsonParser;
 
 $params = array_merge(
@@ -46,6 +47,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+//                ['class' => UrlRule::class, 'controller' => ['p' => 'post']], // just for know more info exp: {{baseUrl}}/p/5
+                ['class' => UrlRule::class, 'controller' => 'post'] // exp: {{baseUrl}}/posts/5
             ],
         ],
     ],
