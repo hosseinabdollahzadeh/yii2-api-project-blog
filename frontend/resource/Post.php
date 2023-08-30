@@ -10,6 +10,16 @@ class Post extends \common\models\Post
 
     public function extraFields()
     {
-        return ['created_at', 'updated_at', 'created_by'];
+        return ['created_at', 'updated_at', 'created_by', 'comments'];
+    }
+
+    /**
+     * Gets query for [[Comments]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComments()
+    {
+        return $this->hasMany(Comment::class, ['post_id' => 'id']);
     }
 }
