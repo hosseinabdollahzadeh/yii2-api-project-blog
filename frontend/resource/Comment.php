@@ -11,7 +11,7 @@ class Comment extends \common\models\Comment
 
     public function extraFields()
     {
-        return ['created_at', 'updated_at', 'created_by', 'post'];
+        return ['created_at', 'updated_at', 'createdBy', 'post'];
     }
 
     /**
@@ -22,5 +22,16 @@ class Comment extends \common\models\Comment
     public function getPost()
     {
         return $this->hasOne(Post::class, ['id' => 'post_id']);
+    }
+
+
+    /**
+     * Gets query for [[CreatedBy]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 }
